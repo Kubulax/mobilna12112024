@@ -3,22 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mobilna.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+    <StackLayout BackgroundColor="LightGreen">
+        <Label BackgroundColor="SeaGreen" Padding="10" FontSize="Large" Text="Wizyta u weterynarza"/>
+
+        <Entry x:Name="Entry_nameAndSurname" Placeholder="Imię i nazwisko właściciela"/>
+
+        <Label Text="Gatunek"/>
+        <ListView x:Name="ListView_animalsList" ItemSelected="SelectAnimal" RowHeight="40">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding .}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Ile ma lat? "/>
+            <Label x:Name="Label_age" Text="0"/>
+            <Slider x:Name="slider" Value="0" Maximum="20" Minimum="0" ValueChanged="ChangeAgeValue" WidthRequest="300"/>
+        </StackLayout>
+
+        <Entry x:Name="Entry_reason" Placeholder="Cel wizyty"/>
+
+        <TimePicker x:Name="TimePicker_visitTime" Time="16:00"/>
+
+        <Button Text="OK" Clicked="Submit"/>
     </StackLayout>
 
 </ContentPage>
